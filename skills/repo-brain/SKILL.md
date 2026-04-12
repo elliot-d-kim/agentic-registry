@@ -57,7 +57,7 @@ Read `references/structure.md` for the directory tree and `references/templates.
    - `docs/CONVENTIONS.md` — file naming, commit format, code style
    - `docs/SETUP.md` — prerequisites and how to run
 
-4. **Create initial principle files** only if enough context exists. Do not fabricate principles — a thin honest file beats a padded one.
+4. **Create initial principle files** only if enough context exists. Do not fabricate principles — a thin honest file beats a padded one. Each principle file should open with an explicit scope statement (what belongs here, what doesn't, where out-of-scope content goes). When a file has 4+ principles, organize into primary (high-level, technology-independent) and applied (downstream of primary, arising from specific tech choices) tiers — see the template in `references/templates.md`.
 
 5. **Create `product-requirements/PROJECT-GOALS.md`** with required vs nice-to-have goals.
 
@@ -92,7 +92,7 @@ Something happened — a discussion, a build, a decision, a status change. Route
 | **New feature idea** | `ROADMAP.md` (one-liner hook in appropriate priority section) |
 | **Feature gaining clarity** | Create `features/FEATURE-NAME.md`, update ROADMAP to `[spec'd]` |
 | **Ready to build** | Create `plans/YYYY-MM-DD-name.md`, update ROADMAP to `[in-progress]` |
-| **Principle discovered** | `principles/RELEVANT.md` — must be durable enough to survive a rewrite |
+| **Principle discovered** | `principles/RELEVANT.md` — must be durable enough to survive a rewrite. Place as primary (high-level) or applied (downstream of a primary principle) |
 | **Convention established** | `CONVENTIONS.md` |
 | **Architecture changed** | `SNAPSHOT.md`, possibly `principles/ARCHITECTURE.md` |
 | **Status changed** | `SNAPSHOT.md` active work section |
@@ -153,6 +153,8 @@ Read all docs systematically and report findings.
    - Implementation detail in principle files? (→ plans or code)
    - Principles in feature docs? (→ principles/)
    - Requirements in plan files? (→ features/)
+   - Applied principles listed as primary? (Should trace to a more general principle)
+   - Missing scope statement at top of principle files?
 
 7. **Convention compliance:** File naming, ROADMAP format, template adherence.
 

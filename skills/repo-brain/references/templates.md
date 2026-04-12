@@ -5,23 +5,50 @@
 ```markdown
 # [Area] Principles
 
-Brief intro — what this file covers and why these principles matter.
+> **What belongs here:** [Explicit scope — what this file covers AND what it doesn't.
+> Name the neighboring docs where out-of-scope content should go instead.]
 
-## 1. [Principle name]
+---
+
+## Primary Principles
+
+### 1. [Principle name]
 
 Explanatory paragraph. WHY this matters, not just WHAT to do. Squishy, durable language that would survive an implementation rewrite.
 
 **How to apply:** Practical guidance. When to invoke this principle. What questions to ask.
 
-## 2. [Next principle]
+### 2. [Next principle]
 
 ...
+
+---
+
+## Applied Principles
+
+_These arise when the primary principles meet specific technology or domain choices.
+They are important but downstream — rooted in the principles above._
+
+### A1. [Applied principle name]
+
+Explanatory paragraph.
+
+**How to apply:** Practical guidance.
+
+**Derives from:** [Which primary principle(s) this is downstream of]
 ```
+
+**Structure guidance:**
+- **Primary principles** are broadly applicable values — modularity, composability, configurability, etc. They would survive a rewrite and are independent of specific technology choices.
+- **Applied principles** are downstream consequences that arise when primary principles meet the project's specific stack. They should trace back to one or more primary principles.
+- Not every principle doc needs both tiers. A file with only 2-3 principles can use a flat structure. Add the two-tier hierarchy when there are enough principles (4+) to make the distinction valuable.
 
 **Quality checks:**
 - Would this survive a complete rewrite of the codebase? If not → convention or implementation detail.
 - Does it explain WHY, not just WHAT? "Use snake_case" is a convention. "Consistent naming because ambiguity costs more than rigidity" is a principle.
 - Does "How to apply" give actionable guidance? Not "follow this" but "when X, ask Y before Z."
+- Does the scope statement at the top make it clear what belongs here vs elsewhere?
+- Are primary principles truly high-level, or are they really downstream of something more general?
 
 ## Feature doc
 
