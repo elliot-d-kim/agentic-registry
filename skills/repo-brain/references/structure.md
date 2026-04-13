@@ -17,6 +17,8 @@ repo-root/
     │   ├── ARCHITECTURE.md
     │   ├── DEVELOPMENT.md
     │   └── (domain-specific principle files)
+    ├── essays/                      (optional — non-canonical session synthesis / research notes)
+    │   └── YYYY-MM-DD-topic.md
     ├── product-requirements/        (WHAT — targets, goals, feature specs)
     │   ├── PROJECT-GOALS.md         (required vs nice-to-have goals)
     │   └── features/
@@ -49,6 +51,12 @@ repo-root/
 | `product-requirements/` | WHAT — goals, features, requirements | Slowly | Concrete, measurable, "success looks like" |
 | `plans/` | HOW — task breakdowns, verification | Constantly (archive when done) | Tactical, specific, checkboxes |
 
+### Optional: essays
+
+| Path | Purpose |
+|------|---------|
+| `docs/essays/` | Long-form reflective synthesis tied to a specific discussion or line of inquiry. Context-rich and intentionally non-canonical — durable takeaways still get extracted into the canonical docs. |
+
 ### Root files
 
 | File | Purpose |
@@ -60,6 +68,7 @@ repo-root/
 
 - Markdown in `docs/`, `principles/`, `features/`: UPPER_CASE (`ROADMAP.md`, `ARCHITECTURE.md`)
 - Plan files: dated kebab-case (`2026-04-11-feature-name.md`)
+- Essay files: dated kebab-case (`2026-04-11-topic.md`)
 - Source code: follow language conventions (Python `snake_case`, JS `camelCase`)
 
 ## Status tags

@@ -11,13 +11,13 @@
         "source": "github",
         "repo": "elliot-d-kim/repo-brain"
       },
-      "description": "Three-pillar documentation architecture — set up, maintain, query, and act on living project docs",
-      "version": "1.0.0",
+      "description": "Three-pillar documentation architecture with sidecars and optional essays lane",
+      "version": "1.1.0",
       "author": {
         "name": "Elliot Kim"
       },
       "category": "workflow",
-      "tags": ["documentation", "architecture", "planning", "decisions", "roadmap"]
+      "tags": ["documentation", "architecture", "planning", "decisions", "roadmap", "essays"]
     }
   ]
 }

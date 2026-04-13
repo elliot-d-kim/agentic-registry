@@ -26,6 +26,10 @@ Three pillars of documentation, each with a different rate of change:
 
 Plus six sidecar files: ROADMAP, CHANGELOG, DECISIONS, SNAPSHOT, CONVENTIONS, SETUP.
 
+Optional:
+
+- **`docs/essays/`** — context-rich, non-canonical reflective writing tied to a discussion or line of inquiry. Preserves argument and session context; durable takeaways still get extracted into the canonical docs.
+
 ## Install
 
 ```

@@ -118,6 +118,30 @@ How we know it worked.
 - Decisions live inline during execution, extract when plan archives.
 - Archive by moving to `plans/archive/` when done.
 
+## Essay doc
+
+```markdown
+# Essay: [Title]
+
+**Date:** YYYY-MM-DD
+**Context:** What discussion, session, or line of inquiry this essay came from.
+
+## Why this essay exists
+Why this should remain context-rich writing instead of being forced directly into canonical docs.
+
+## Main argument
+Long-form reasoning, examples, tensions, and open texture from the discussion.
+
+## Implications for the canonical docs
+What, if anything, should later be extracted into principles, product requirements, decisions, plans, or conventions.
+```
+
+**Rules:**
+- Essays are intentionally non-canonical — they preserve context and argument, not authoritative facts.
+- If durable knowledge emerges, extract it into the canonical docs (principles, DECISIONS, features, CONVENTIONS) and link back.
+- Do not let essays become a shadow source of truth. The canonical docs remain authoritative.
+- Essays are optional. Skip the lane entirely if the project won't produce long-form reflective writing.
+
 ## DECISIONS.md entry
 
 ```markdown
@@ -167,6 +191,7 @@ Last few notable changes (orientation, not full changelog).
 | Why we do things this way | `docs/principles/` |
 | What we're building | `docs/product-requirements/` |
 | How we're building it | `docs/plans/` |
+| Reflective synthesis (optional) | `docs/essays/` |
 | What we built | `docs/CHANGELOG.md` |
 | Decisions made | `docs/DECISIONS.md` |
 | What's next | `docs/ROADMAP.md` |

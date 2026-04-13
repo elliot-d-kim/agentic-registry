@@ -1,11 +1,11 @@
 ---
 name: repo-brain
-description: "Set up, maintain, query, and act on a three-pillar documentation architecture (principles/product-requirements/plans + sidecars). Use this skill whenever the user asks to: initialize or set up project docs, update documentation after a discussion/build/decision, find gaps or contradictions in docs, evaluate options against existing principles or decisions, recall why something was decided, scope or plan what to work on next from the roadmap, or execute the next task. Also use when the user says things like 'update the docs', 'log this decision', 'what's next', 'why did we do X', 'do the next thing', or when you notice the project has this doc structure (docs/principles/, docs/product-requirements/, ROADMAP.md, DECISIONS.md) and the user's task would benefit from consulting or updating it. Even if the user doesn't mention 'docs' explicitly, use this skill when their request involves project planning, decision-making, or architectural discussion that should be captured."
+description: "Set up, maintain, query, and act on a three-pillar documentation architecture (principles/product-requirements/plans + sidecars, with an optional essays lane). Use this skill whenever the user asks to: initialize or set up project docs, update documentation after a discussion/build/decision, find gaps or contradictions in docs, evaluate options against existing principles or decisions, recall why something was decided, scope or plan what to work on next from the roadmap, execute the next task, or preserve a context-rich discussion as a non-canonical essay. Also use when the user says things like 'update the docs', 'log this decision', 'what's next', 'why did we do X', 'do the next thing', 'capture this discussion', or when you notice the project has this doc structure (docs/principles/, docs/product-requirements/, ROADMAP.md, DECISIONS.md) and the user's task would benefit from consulting or updating it. Even if the user doesn't mention 'docs' explicitly, use this skill when their request involves project planning, decision-making, architectural discussion, or reflective synthesis that should be captured."
 ---
 
 # Repo Brain
 
-A living documentation architecture that separates WHY (principles) from WHAT (product-requirements) from HOW (plans), with sidecar docs for routing, history, and state.
+A living documentation architecture that separates WHY (principles) from WHAT (product-requirements) from HOW (plans), with sidecar docs for routing, history, and state, plus an optional essays lane for context-rich, non-canonical synthesis.
 
 ## Why this system exists
 
@@ -15,6 +15,7 @@ This architecture fights that by:
 - **Separating by rate of change.** Principles rarely change. Requirements change slowly. Plans change constantly and archive when done. Mixing them in one doc means stable content gets buried by churn.
 - **Starving summaries.** ROADMAP entries are hooks (~10 words), not summaries. This forces anyone (human or LLM) to drill into the source doc.
 - **Single source of truth.** Each fact lives in exactly one doc. "See also" links between two docs with the same content means one is wrong.
+- **Room for essays without letting them become canon.** Some discussions are valuable because they preserve argument and context. The optional essays lane captures that — but durable takeaways still get extracted into the canonical docs.
 
 ## How to use this skill
 
@@ -24,6 +25,7 @@ Match the user's request to a mode. If ambiguous, ask. If the request spans mode
 |---|---|
 | "set up docs" / "initialize documentation" / new repo | **Setup** |
 | "we just built X" / "update docs" / "log this decision" / "we discussed X" | **Update** |
+| "capture this discussion" / "turn this into an essay" / "preserve the thinking" | **Update** (essays) |
 | "find gaps" / "audit" / "what's missing" / "contradictions" / "ask me questions" | **Audit** |
 | "should we do X or Y" / "evaluate against principles" / "help me decide" | **Evaluate** |
 | "why did we do X" / "remind me" / "what alternatives" / "reasons we didn't" | **Recall** |
@@ -61,9 +63,11 @@ Read `references/structure.md` for the directory tree and `references/templates.
 
 5. **Create `product-requirements/PROJECT-GOALS.md`** with required vs nice-to-have goals.
 
-6. **Update `README.md`** — add a Docs section linking to the structure.
+6. **Create `docs/essays/` only if the project benefits from long-form reflective synthesis.** The essays lane is optional — skip it for projects that won't produce context-rich session writing.
 
-7. **Create/update `AGENTS.md`** — doc routing table for coding agents.
+7. **Update `README.md`** — add a Docs section linking to the structure.
+
+8. **Create/update `AGENTS.md`** — doc routing table for coding agents.
 
 ### Existing repo with existing docs
 
@@ -96,6 +100,7 @@ Something happened — a discussion, a build, a decision, a status change. Route
 | **Convention established** | `CONVENTIONS.md` |
 | **Architecture changed** | `SNAPSHOT.md`, possibly `principles/ARCHITECTURE.md` |
 | **Status changed** | `SNAPSHOT.md` active work section |
+| **Context-rich reflective synthesis** | `essays/YYYY-MM-DD-topic.md` (optional), then extract durable takeaways into canonical docs |
 | **Bug fixed / improvement** | `CHANGELOG.md` only (unless it involved a real decision) |
 
 ### Update protocol
@@ -158,6 +163,8 @@ Read all docs systematically and report findings.
 
 7. **Convention compliance:** File naming, ROADMAP format, template adherence.
 
+8. **Essay hygiene** (if `essays/` exists): Are essays preserving context without quietly becoming a shadow source of truth? Have durable takeaways been extracted into principles / decisions / conventions?
+
 Report findings as a prioritized list. Ask the user clarifying questions about anything ambiguous — use audit mode as a two-way conversation, not just a report.
 
 ---
@@ -182,8 +189,9 @@ The user wants to know why something was decided or what alternatives were consi
 1. **Search `DECISIONS.md`** — decisions are numbered (D-NNN) with rationale and rejected alternatives.
 2. **Search `plans/archive/`** for in-context discussion around the decision.
 3. **Search `CHANGELOG.md`** for when the change landed.
-4. **Search `git log`** if docs don't surface enough context.
-5. **Present:** the decision, rationale, rejected alternatives, and when it happened. If the decision seems stale or context has changed, flag that.
+4. **Search `essays/`** (if present) when the canonical docs feel too compressed and the original argument/context matters.
+5. **Search `git log`** if docs don't surface enough context.
+6. **Present:** the decision, rationale, rejected alternatives, and when it happened. If the decision seems stale or context has changed, flag that.
 
 ---
 
@@ -218,6 +226,7 @@ These apply to ALL modes:
 - **ROADMAP entries are hooks, not summaries.** Max ~10 words after the status tag.
 - **Each doc has one job.** Duplication means one of them is wrong.
 - **Principles are durable.** Would this survive a rewrite? If not, it's a convention or implementation detail.
+- **Essays are non-canonical.** Use them to preserve context and argument; extract durable knowledge into the canonical docs and don't let essays become a shadow source of truth.
 - **Decisions have rejected alternatives.** No alternative = not a decision = goes in SNAPSHOT or CONVENTIONS.
 - **CHANGELOG is historical — never rewrite old entries.**
 - **When in doubt, ask.** One round-trip is cheap. Fabricated content rots permanently.
