@@ -74,10 +74,12 @@ agentic-registry/
 
 ### Marketplace manifest
 
-`.claude-plugin/marketplace.json` becomes the central registry. Per the Claude Code marketplace schema:
+`.claude-plugin/marketplace.json` becomes the central registry. Per the Claude Code marketplace schema ([docs](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources)):
 
-- Plugins housed inline use a relative-path string source: `"source": "./plugins/<name>"`.
-- External plugins use the object form: `{"source": "github", "repo": "owner/name"}`.
+- Plugins housed inline use a relative-path **string** source: `"source": "./plugins/<name>"`. The path must start with `./` and is resolved relative to the marketplace root.
+- Plugins fetched from an external GitHub repo use an **object** source where the inner `source` discriminator is `"github"`. The full shape is `"source": { "source": "github", "repo": "owner/name" }`. (The nested `source` key is canonical, not a typo — it acts as a discriminator across source types: `github`, `url`, `git-subdir`, `npm`.)
+- The plugin entry's `version` field is optional. For git-based sources (`github`, `url`, relative paths inside a git-hosted marketplace), omitting `version` means each new upstream commit counts as a new version — exactly the behavior we want for reference-only third-party entries, since users auto-pick up upstream changes.
+- **Do not set `version` in both `plugin.json` and the marketplace entry.** The `plugin.json` value silently wins. For `repo-brain`, version stays in its `plugin.json` (where it already lives) and is omitted from the marketplace entry.
 
 ```json
 {
@@ -89,7 +91,6 @@ agentic-registry/
     {
       "name": "repo-brain",
       "description": "Three-pillar documentation architecture (principles/product-requirements/plans) with sidecars and optional essays lane.",
-      "version": "1.1.0",
       "source": "./plugins/repo-brain",
       "author": { "name": "Elliot Kim" },
       "category": "workflow",
@@ -99,17 +100,17 @@ agentic-registry/
       "name": "mattpocock-skills",
       "description": "Matt Pocock's curated skill collection — TDD, systematic-debugging (diagnose), grill-me, grill-with-docs, triage, to-issues, to-prd, write-a-skill, caveman, and more. Approved 3rd-party; source of truth is upstream mattpocock/skills.",
       "source": { "source": "github", "repo": "mattpocock/skills" },
+      "author": { "name": "Matt Pocock" },
       "category": "engineering",
-      "tags": ["tdd", "debugging", "engineering", "productivity", "skills"],
-      "author": { "name": "Matt Pocock" }
+      "tags": ["tdd", "debugging", "engineering", "productivity", "skills"]
     },
     {
       "name": "superpowers",
       "description": "Jesse Vincent's opinionated development methodology — brainstorming, executing-plans, TDD, systematic-debugging, code-review, verification-before-completion, parallel-agents, and more. Approved 3rd-party; source of truth is upstream obra/superpowers.",
       "source": { "source": "github", "repo": "obra/superpowers" },
+      "author": { "name": "Jesse Vincent" },
       "category": "workflow",
-      "tags": ["methodology", "workflow", "tdd", "debugging", "agents"],
-      "author": { "name": "Jesse Vincent" }
+      "tags": ["methodology", "workflow", "tdd", "debugging", "agents"]
     }
   ]
 }
@@ -119,8 +120,8 @@ agentic-registry/
 
 The existing plugin moves wholesale:
 
-- `.claude-plugin/plugin.json` → `plugins/repo-brain/.claude-plugin/plugin.json` (contents unchanged).
-- `skills/repo-brain/` → `plugins/repo-brain/skills/repo-brain/` (contents unchanged; git mv preserves history).
+- `.claude-plugin/plugin.json` → `plugins/repo-brain/.claude-plugin/plugin.json` (contents unchanged; already contains `name`, `version: "1.1.0"`, `description`, `author` — all still correct after the move because the plugin manifest doesn't encode its own filesystem location).
+- `skills/repo-brain/` → `plugins/repo-brain/skills/repo-brain/` (contents unchanged; `git mv` preserves history).
 
 The plugin's internal layout (SKILL.md and references) is unchanged. The marketplace manifest's `source: ./plugins/repo-brain` is resolved by Claude Code relative to the marketplace.json, so the plugin loads exactly as before from the consumer's perspective.
 
@@ -171,6 +172,10 @@ Rewritten as the marketplace landing page. Sections:
 
 - Should `plugins/repo-brain/README.md` be created now or deferred? Current spec marks it optional. Recommendation: defer — the SKILL.md is already self-documenting.
 - Will the user rename the GitHub remote before or after this restructure lands? If after, the marketplace will still install (GitHub auto-redirects), but the install command in the README should already use `elliot-d-kim/agentic-registry`.
+
+## Validation
+
+After the migration, run `claude plugin validate .` from the repo root. This is the official Claude Code marketplace validator — it catches JSON syntax errors, missing required fields, duplicate plugin names, and `..` in source paths. The plan should include this as the success check.
 
 ## Risk and mitigation
 
