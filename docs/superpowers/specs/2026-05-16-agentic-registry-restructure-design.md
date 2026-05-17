@@ -1,7 +1,7 @@
 # agentic-registry restructure — design
 
 **Date:** 2026-05-16
-**Status:** Approved (pending spec review)
+**Status:** Approved
 **Author:** Elliot Kim (with Claude Code)
 
 ## Context
