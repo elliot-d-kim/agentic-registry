@@ -1,37 +1,37 @@
-# repo-brain
+# agentic-registry
 
-A Claude Code plugin for managing a three-pillar documentation architecture across any project.
+A curated [Claude Code](https://www.anthropic.com/claude-code) plugin marketplace. Mixes Elliot Kim's own plugins with approved third-party collections, so you can install them together from one place.
 
-## What it does
-
-Repo Brain gives Claude a `/repo-brain` skill with seven modes:
-
-| Mode | Trigger | What it does |
-|------|---------|--------------|
-| **Setup** | "set up docs for this repo" | Scaffolds the full doc structure (new or existing repo) |
-| **Update** | "we just built X, update docs" | Routes changes to the right files |
-| **Audit** | "check docs for gaps" | 7-point consistency check |
-| **Evaluate** | "should we do X or Y?" | Evaluates options against principles and decisions |
-| **Recall** | "why did we do X?" | Finds rationale across decisions, plans, principles |
-| **Scope** | "what should we work on next?" | Prioritizes from the roadmap |
-| **Execute** | "do the next thing" | Picks up the next task and runs |
-
-## The architecture
-
-Three pillars of documentation, each with a different rate of change:
-
-- **`docs/principles/`** — WHY (durable design insights, rarely change)
-- **`docs/product-requirements/`** — WHAT (goals, features, requirements)
-- **`docs/plans/`** — HOW (task breakdowns, archived when done)
-
-Plus six sidecar files: ROADMAP, CHANGELOG, DECISIONS, SNAPSHOT, CONVENTIONS, SETUP.
-
-Optional:
-
-- **`docs/essays/`** — context-rich, non-canonical reflective writing tied to a discussion or line of inquiry. Preserves argument and session context; durable takeaways still get extracted into the canonical docs.
-
-## Install
+## Install the marketplace
 
 ```
-claude plugin install elliot-d-kim/repo-brain
+claude plugin marketplace add elliot-d-kim/agentic-registry
 ```
+
+Then install any plugin from the table below:
+
+```
+claude plugin install <plugin-name>@agentic-registry
+```
+
+## Plugins
+
+| Plugin | Source | Author | What it does |
+|---|---|---|---|
+| `repo-brain` | inline (`./plugins/repo-brain`) | Elliot Kim | Three-pillar documentation architecture (principles/product-requirements/plans) with sidecars and optional essays lane. |
+| `mattpocock-skills` | upstream [`mattpocock/skills`](https://github.com/mattpocock/skills) | Matt Pocock | Curated skill collection — TDD, systematic-debugging (`diagnose`), `grill-me`, `grill-with-docs`, `triage`, `to-issues`, `to-prd`, `write-a-skill`, `caveman`, and more. |
+| `superpowers` | upstream [`obra/superpowers`](https://github.com/obra/superpowers) | Jesse Vincent | Opinionated development methodology — brainstorming, executing-plans, TDD, systematic-debugging, code-review, verification-before-completion, parallel-agents, and more. |
+
+## Loose skills
+
+`skills/` is reserved for standalone skills that aren't (yet) wrapped in a plugin. None live here yet — see [`skills/README.md`](skills/README.md) for the policy and manual install instructions.
+
+## Curation policy
+
+- **Own plugins** live inline under `plugins/<name>/` and are released from this repo.
+- **Third-party plugins** are listed as reference-only entries in `.claude-plugin/marketplace.json` with a GitHub source. Upstream is the source of truth — when you install one, Claude Code pulls directly from the upstream repo, so upstream fixes and updates flow through automatically.
+- Inclusion of a third-party plugin means I've used it, vouch for it, and trust the upstream maintainer's release discipline. It does not mean I maintain it.
+
+## Contributing
+
+Open an issue with a proposal — what the plugin is, who maintains it, and why it belongs here. Pull requests welcome for typos, broken links, or metadata corrections.
