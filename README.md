@@ -22,7 +22,6 @@ claude plugin install <plugin-name>@agentic-registry
 |---|---|---|---|
 | `repo-brain` | upstream [`elliot-d-kim/repo-brain`](https://github.com/elliot-d-kim/repo-brain) | Elliot Kim | Three-pillar documentation architecture (principles/product-requirements/plans) with sidecars and optional essays lane. |
 | `mattpocock-skills` | upstream [`mattpocock/skills`](https://github.com/mattpocock/skills) | Matt Pocock | Curated skill collection — TDD, systematic-debugging (`diagnose`), `grill-me`, `grill-with-docs`, `triage`, `to-issues`, `to-prd`, `write-a-skill`, `caveman`, and more. |
-| `superpowers` | upstream [`obra/superpowers`](https://github.com/obra/superpowers) | Jesse Vincent | Opinionated development methodology — brainstorming, executing-plans, TDD, systematic-debugging, code-review, verification-before-completion, parallel-agents, and more. |
 
 ## Loose skills
 

@@ -19,14 +19,6 @@
       "author": { "name": "Matt Pocock" },
       "category": "engineering",
       "tags": ["tdd", "debugging", "engineering", "productivity", "skills"]
-    },
-    {
-      "name": "superpowers",
-      "description": "Jesse Vincent's opinionated development methodology — brainstorming, executing-plans, TDD, systematic-debugging, code-review, verification-before-completion, parallel-agents, and more. Approved 3rd-party; source of truth is upstream obra/superpowers.",
-      "source": { "source": "github", "repo": "obra/superpowers" },
-      "author": { "name": "Jesse Vincent" },
-      "category": "workflow",
-      "tags": ["methodology", "workflow", "tdd", "debugging", "agents"]
     }
   ]
 }
