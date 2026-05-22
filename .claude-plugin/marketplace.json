@@ -7,7 +7,7 @@
     {
       "name": "repo-brain",
       "description": "Three-pillar documentation architecture (principles/product-requirements/plans) with sidecars and optional essays lane.",
-      "source": "./plugins/repo-brain",
+      "source": { "source": "github", "repo": "elliot-d-kim/repo-brain" },
       "author": { "name": "Elliot Kim" },
       "category": "workflow",
       "tags": ["documentation", "architecture", "planning", "decisions", "roadmap", "essays"]
