@@ -1,0 +1,42 @@
+{
+  "name": "repo-brain",
+  "version": "1.1.0",
+  "description": "Three-pillar documentation architecture with sidecars and optional essays lane",
+  "author": {
+    "name": "Elliot Kim",
+    "url": "https://github.com/elliot-d-kim"
+  },
+  "homepage": "https://github.com/elliot-d-kim/repo-brain",
+  "repository": "https://github.com/elliot-d-kim/repo-brain",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "architecture",
+    "planning",
+    "decisions",
+    "roadmap",
+    "essays"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Repo Brain",
+    "shortDescription": "Maintain project docs, decisions, plans, and roadmap context",
+    "longDescription": "Repo Brain helps Codex set up, maintain, query, and act on a three-pillar documentation architecture: principles, product requirements, plans, and sidecar docs for decisions, roadmap, changelog, setup, conventions, and current state.",
+    "developerName": "Elliot Kim",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/elliot-d-kim/repo-brain",
+    "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Set up repo-brain docs for this project.",
+      "Update the project docs from this work.",
+      "What should we work on next?"
+    ],
+    "brandColor": "#2563EB"
+  }
+}

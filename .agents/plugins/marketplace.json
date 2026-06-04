@@ -7,8 +7,8 @@
     {
       "name": "repo-brain",
       "source": {
-        "source": "github",
-        "repo": "elliot-d-kim/repo-brain"
+        "source": "local",
+        "path": "./plugins/repo-brain"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -17,10 +17,10 @@
       "category": "Developer Tools"
     },
     {
-      "name": "mattpocock-skills",
+      "name": "codex-cloud-bootstrap",
       "source": {
-        "source": "github",
-        "repo": "mattpocock/skills"
+        "source": "local",
+        "path": "./plugins/codex-cloud-bootstrap"
       },
       "policy": {
         "installation": "AVAILABLE",
