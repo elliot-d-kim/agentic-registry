@@ -5,13 +5,15 @@ When this repo runs in Codex Cloud, local Codex plugin marketplace state from a 
 The cloud environment setup script may clone `elliot-d-kim/agentic-registry` into:
 
 ```text
-$AGENTIC_REGISTRY_ROOT
+~/.codex-cloud/agentic-registry
 ```
 
-If `$AGENTIC_REGISTRY_ROOT` is unset, first check:
+If `AGENTIC_REGISTRY_ROOT` is configured in the Codex Cloud environment, it may
+point to a different clone path. Exports made only inside the setup script may
+not be visible in every agent shell, so do not rely on the variable being set.
 
 ```text
-~/.codex-cloud/agentic-registry
+$AGENTIC_REGISTRY_ROOT
 ```
 
 ## Repo Brain Fallback
@@ -21,8 +23,9 @@ When the user asks to set up docs, update docs after work, log decisions, inspec
 Prefer installed plugin or skill invocation if available. If plugin invocation is not available in Codex Cloud, read:
 
 ```text
-$AGENTIC_REGISTRY_ROOT/plugins/repo-brain/skills/repo-brain/SKILL.md
 ~/.codex/skills/repo-brain/SKILL.md
+~/.codex-cloud/agentic-registry/plugins/repo-brain/skills/repo-brain/SKILL.md
+$AGENTIC_REGISTRY_ROOT/plugins/repo-brain/skills/repo-brain/SKILL.md
 ```
 
 Then follow the skill manually.
