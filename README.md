@@ -1,10 +1,12 @@
 # agentic-registry
 
-A curated [Claude Code](https://www.anthropic.com/claude-code) plugin marketplace. A convenient bundle that points at standalone plugin repos — Elliot Kim's own plus approved third-party collections — so you can install them together from one place.
+A curated plugin marketplace for agentic coding clients, with manifests for both [Claude Code](https://www.anthropic.com/claude-code) and Codex-compatible plugin consumers. A convenient bundle that points at standalone plugin repos — Elliot Kim's own plus approved third-party collections — so you can install them together from one place.
 
 Every plugin lives in its own repo. This marketplace doesn't host plugin code; it just references upstream sources. That means any other marketplace can pick and choose individual plugins from this list and bundle them however they like.
 
 ## Install the marketplace
+
+### Claude Code
 
 ```
 claude plugin marketplace add elliot-d-kim/agentic-registry
@@ -15,6 +17,14 @@ Then install any plugin from the table below:
 ```
 claude plugin install <plugin-name>@agentic-registry
 ```
+
+Claude Code reads the marketplace manifest from [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json).
+
+### Codex plugin consumers
+
+This repo also ships a Codex marketplace manifest at [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json), following the multi-client layout used by projects such as [`obra/superpowers`](https://github.com/obra/superpowers): keep client-specific manifests side by side and point each one at the same curated upstream plugin sources.
+
+Codex-compatible clients can register this repository as a plugin marketplace, then install the same plugin names from `agentic-registry`. If your Codex client only supports local marketplace sources, mirror or clone the listed upstream plugin repos under `plugins/<plugin-name>/` and change the corresponding `source` entry to a local `path`.
 
 ## Plugins
 
@@ -29,7 +39,7 @@ claude plugin install <plugin-name>@agentic-registry
 
 ## Curation policy
 
-- **Every plugin lives in its own repo** and is referenced from `.claude-plugin/marketplace.json` as a `github` source. Upstream is always the source of truth — when you install one, Claude Code pulls directly from the upstream repo, so fixes and updates flow through automatically.
+- **Every plugin lives in its own repo** and is referenced from the Claude and Codex marketplace manifests as a `github` source. Upstream is always the source of truth — when a client installs one, it pulls directly from the upstream repo, so fixes and updates flow through automatically.
 - **Own plugins** (authored by Elliot Kim) and **third-party plugins** use the same reference-by-upstream model. The only difference is who maintains them.
 - Inclusion of a third-party plugin means I've used it, vouch for it, and trust the upstream maintainer's release discipline. It does not mean I maintain it.
 - Other marketplaces are welcome to reference any of these upstream repos directly — the per-repo layout is the point.
