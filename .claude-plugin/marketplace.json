@@ -13,6 +13,14 @@
       "tags": ["documentation", "architecture", "planning", "decisions", "roadmap", "essays"]
     },
     {
+      "name": "handoff-cc",
+      "description": "Claude Code-tuned session handoff/pickup — write a committed pointer-style handoff (docs/handoffs/) before compact/clear, then resume in a fresh session by reading source docs first-hand and continuing without a confirmation double-check.",
+      "source": "./plugins/handoff-cc",
+      "author": { "name": "Elliot Kim" },
+      "category": "workflow",
+      "tags": ["handoff", "pickup", "compact", "session", "continuity", "cloud"]
+    },
+    {
       "name": "mattpocock-skills",
       "description": "Matt Pocock's curated skill collection — TDD, systematic-debugging (diagnose), grill-me, grill-with-docs, triage, to-issues, to-prd, write-a-skill, caveman, and more. Approved 3rd-party; source of truth is upstream mattpocock/skills.",
       "source": { "source": "github", "repo": "mattpocock/skills" },

@@ -1,0 +1,8 @@
+{
+  "name": "handoff-cc",
+  "version": "0.1.0",
+  "description": "Claude Code-tuned session handoff and pickup: write a committed pointer-style handoff before compact/clear, then resume in a fresh session by reading the source docs first-hand and continuing without a confirmation double-check",
+  "author": {
+    "name": "Elliot Kim"
+  }
+}
