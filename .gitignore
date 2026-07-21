@@ -1,2 +1,5 @@
 # Cygwin/MSYS bash crash dumps
 *.stackdump
+
+# macOS
+.DS_Store

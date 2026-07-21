@@ -1,0 +1,9 @@
+{
+  "name": "shadcn",
+  "description": "shadcn component-family adapter. Two lanes: the official shadcn skill (vendored from shadcn-ui/ui) for React projects via the shadcn CLI, registries, and MCP; and a basecoat skill for shadcn-look markup without React via pinned CDN or npm+Tailwind. Ships the official shadcn MCP server (npx shadcn@latest mcp) and a shared theme-contract reference (references/theme-contract.md) so a theme authored once serves both lanes. Vendored content is synced manually at pinned upstream commits; provenance in UPSTREAM.md.",
+  "version": "0.1.1",
+  "author": {
+    "name": "Elliot Kim",
+    "email": "elliotdkim1@gmail.com"
+  }
+}
